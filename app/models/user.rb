@@ -10,10 +10,8 @@ class User
   property :id, Serial
   property :name, String
   property :username, String
-  property :email, String
-  # unique: true, message: 'This email is already taken'
-  property :password, String, message: 'Sorry, your passwords do not match'
-  # unique: true, message: 'This username is already taken'
+  property :email, String, unique: true, message: 'This email already exists'
+  property :password, String, unique: true, message: 'Sorry, your passwords do not match'
   property :password_confirmation, String
   property :password_digest, Text
 
