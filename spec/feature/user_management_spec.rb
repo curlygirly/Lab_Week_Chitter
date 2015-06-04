@@ -7,7 +7,7 @@ feature 'User signs up' do
     visit '/'
     expect { sign_up }.to change(User, :count).by(1)
     expect(page).to have_content('Welcome, Bob')
-    expect(user.first.name).to eq('Bob')
+    expect(User.first.name).to eq('Bob')
   end
 
   def sign_up(email = 'bob@bob@bob',
@@ -15,7 +15,7 @@ feature 'User signs up' do
               username = 'bobby',
               password = 'bob',
               password_confirmation = 'bob')
-  visit '/users/new'
+  visit '/user/new'
   fill_in :email, with: email
   fill_in :name, with: name
   fill_in :username, with: username
