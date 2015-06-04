@@ -9,7 +9,8 @@ describe Peep do
                         password: 'bob',
                         password_confirmation: 'bob')
   end
-  it'can be added to database, retrieved and destoyed' do
+
+  it 'can be added to database, retrieved and destoyed' do
     expect(Peep.count).to eq(0)
     Peep.create(name: @user.name, message: "Hello peeps")
     expect(Peep.count).to eq(1)
@@ -18,4 +19,5 @@ describe Peep do
     peep.destroy
     expect(Peep.count).to eq(0)
   end
+
 end

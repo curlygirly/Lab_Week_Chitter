@@ -7,6 +7,7 @@ DataMapper.setup(:default, "postgres://localhost/Chitter_#{env}")
 
 require_relative './models/peep'
 require_relative './models/user'
+require_relative './controllers/user'
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
@@ -14,6 +15,7 @@ DataMapper.auto_upgrade!
 class Chitter < Sinatra::Base
   get '/' do
     'Hello Chitter!'
+    # erb :index
   end
 
   # start the server if ruby file executed directly
