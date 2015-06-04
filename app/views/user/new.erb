@@ -1,4 +1,12 @@
 <h1>Sign up, guys!</h1>
+
+<% if flash[:errors] && !flash[:errors].empty? %>
+Sorry, your passwords do not match
+  <% flash[:errors].each do |error| %>
+  <li><%= error %></li>
+  <% end %>
+<% end %>
+
 <form method="post" action="/user">
   Name: <input type="text" name="name">
   Username: <input type="text" name="username">

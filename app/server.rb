@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'data_mapper'
+require 'rack-flash'
 
 env = ENV['RACK_ENV'] || 'development'
 
@@ -15,6 +16,8 @@ DataMapper.auto_upgrade!
 class Chitter < Sinatra::Base
 
   enable :sessions
+  use Rack::Flash
+  use Rack::MethodOverride
 
 
   helpers do
@@ -42,6 +45,9 @@ class Chitter < Sinatra::Base
     if @user.save
       session[:user_id] = @user.id
       redirect to('/')
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      erb :'user/new'
     end
   end
 

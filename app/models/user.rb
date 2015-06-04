@@ -12,7 +12,7 @@ class User
   property :username, String
   property :email, String
   # unique: true, message: 'This email is already taken'
-  property :password, String
+  property :password, String, message: 'Sorry, your passwords do not match'
   # unique: true, message: 'This username is already taken'
   property :password_confirmation, String
   property :password_digest, Text
