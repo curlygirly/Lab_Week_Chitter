@@ -6,15 +6,15 @@
 <body>
   <% if current_user %>
     Welcome, <%= current_user.name %>
-    <form method='post' action='/sessions'>
+    <form method='post' action='/session'>
       <input type='hidden' name='_method' value='delete'>
       <input type='submit' value='Sign out' id='submit-buttons'>
     </form>
   <% else %>
-  <div id="signup-signin">
-  <a href="/users/new" id="submit-buttons">Sign up</a>
-  <a href="/sesssions/new" id="submit-buttons">Sign in</a>
-  </div>
+    <div id="signup-signin">
+    <a href="/user/new" id="submit-buttons">Sign up</a>
+    <a href="/session/new" id="submit-buttons">Sign in</a>
+    </div>
   <% end %>
   <%= yield %>
 

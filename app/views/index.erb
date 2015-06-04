@@ -1,3 +1,14 @@
 <h1>  </h1>
 
 
+<div id='message'>
+  <form method="post" action="/peep">
+    <input type="text" name="message">
+    <input type="submit" value="Peep">
+  </form>
+</div>
+
+<% @peep.reverse_each do |peep| %>
+  <%= peep.message %>
+  Peeped by <%= peep.name %>, <%= peep.username %>
+<% end %>

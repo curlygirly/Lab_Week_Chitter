@@ -23,6 +23,7 @@ class Chitter < Sinatra::Base
   end
 
   get '/' do
+    @peep = Peep.all
     erb :index
   end
 
@@ -53,8 +54,24 @@ class Chitter < Sinatra::Base
     if user
       session[:user_id] = user.id
     redirect '/'
+    else
+      session[:user_id] = nil
+      redirect '/'
     end
   end
-  # start the server if ruby file executed directly
-  run! if app_file == $0
+
+  post '/peep' do
+    if current_user
+      message = params[:message]
+      @peep = Peep.create(message: message, username: current_user.username, name: current_user.name)
+      redirect '/'
+    else
+      redirect '/'
+    end
+  end
+
+   delete '/session' do
+      session[:user_id] = nil
+      redirect to('/')
+  end
 end
