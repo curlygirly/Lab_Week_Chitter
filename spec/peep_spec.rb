@@ -1,3 +1,5 @@
+require './app/server'
+
 describe Peep do
 
   before(:each) do
