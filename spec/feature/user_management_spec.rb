@@ -12,6 +12,15 @@ feature 'User signs up' do
     expect(page).to have_content('Welcome, Bob')
     expect(User.first.name).to eq('Bob')
   end
+
+#   scenario ' with a password that does not match' do
+#     expect { sign_up(password: 'pass', password_confirmation: 'wrong') }.to change(User, :count).by(0)
+#     expect(current_path).to eq('/user')
+#     expect(page).to have_content('Sorry, your passwords do not match')
+#   end
+
+#  xscenario ' cannot sign up with same username'
+
 end
 
 feature 'As a registered user' do

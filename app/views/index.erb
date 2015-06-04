@@ -7,8 +7,9 @@
     <input type="submit" value="Peep">
   </form>
 </div>
-
+<li>
 <% @peep.reverse_each do |peep| %>
-  <%= peep.message %>
+ <ul> <%= peep.message %>
   Peeped by <%= peep.name %>, <%= peep.username %>
+  </ul></li>
 <% end %>
